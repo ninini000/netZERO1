@@ -1,0 +1,251 @@
+/* ① カスタムフォントの読み込み（Webフォントとして `03SmartFontUI.ttf` を適用） */
+@font-face {
+    font-family: '03SmartFontUI'; /* フォントの名前を指定 */
+    src: url('03SmartFontUI.ttf') format('truetype'); /* フォントファイルを読み込む */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ② 全体のリセット（デフォルトの余白などをリセット） */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ③ サイト全体の基本スタイル */
+body {
+    font-family: '03SmartFontUI', sans-serif; /* サイト全体のフォントを統一 */
+    background-color: #ffffff; /* 背景色を淡いグレーに */
+    color: #333; /* 文字色を濃いグレーに */
+    text-align: center;
+}
+
+/* ④ パネルを並べるコンテナ（パネル全体を管理する枠） */
+.panel-container {
+    display: flex; /* 横並びに配置 */
+    flex-wrap: wrap; /* 画面幅が狭いときに折り返し */
+    gap: 40px; /* パネルの間隔 */
+    justify-content: center; /* 中央寄せにする */
+    transform: scale(0.85); /* 縮小*/
+    padding: 20px;
+}
+
+/* ⑤ 各パネルのデザイン（1つ1つのパネルの見た目） */
+.panel {
+    width: 400px;
+    height: 400px;
+    background: #fff;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+    
+    transition: transform 0.3s ease-in-out; /* ホバー時のアニメーション */
+}
+
+/* ⑥ パネルをホバーしたときの動き（マウスを乗せたら少し拡大） */
+.panel:hover {
+    transform: scale(1.05); /* 1.05倍に拡大 */
+}
+
+/* ⑦ 画像のデザイン */
+.main-image {
+    width: 100%; /* 画像の横幅をパネルいっぱいに */
+    border-radius: 10px 10px 0 0; /* 上だけ角丸に（上左, 上右, 下右, 下左） */
+}
+
+.goodmark-image {
+    width: 85px; /* アイコンの幅 */
+    height: 85px; /* アイコンの高さ */
+    position: relative; /* 相対位置を有効化 */
+    top: -78px; /* 上に移動 */
+    right: -120px; /* 右に移動 */
+    background-color: transparent; /* 背景色は透過 */
+    border-radius: 50%; /* 丸い形状を補完 */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* 自然な影を追加 */
+}
+
+/* ⑧ テキスト部分のデザイン */
+.panel-content {
+    padding: 10px; /* 文字周りの余白 */
+    text-align: center; /* 中央寄せ */
+}
+
+/* ⑨ 作品タイトル（h2タグ） */
+.panel-content h2 {
+    font-family: 03SmartFontUI;
+    font-weight: normal;
+    font-size: 30px;
+    text-align: left;
+    color: #000;    
+    margin-top: 15px; /* 上に余白を追加 */
+    margin-left: 10px; /* 左に余白を追加 */
+}
+
+/* ⑩ 作者名（pタグ .author） */
+.panel-content .author {
+    font-family: 03SmartFontUI;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: left;
+    color: #000;
+    margin-top: 15px; /* 上に余白を追加 */
+    margin-left: 12px; /* 左に余白を追加 */ 
+}
+
+/* MOREテキスト */
+.panel-content .more {
+    font-family: 03SmartFontUI;
+    font-weight: normal;
+    font-size: 25px;
+    text-align: left;
+    color: #000;
+    margin-top: 40px; /* 上に余白を追加 */
+    margin-left: 12px; /* 左に余白を追加 */ 
+}
+
+.MORE-image {
+    width: 25px; /* アイコンの幅 */
+    height: 25px; /* アイコンの高さ */
+    position: relative; /* 相対位置を有効化 */
+    top: -84px; /* 上に移動 */
+    left: -40px; /* 左に移動 */
+}
+
+/* ヘッダー全体（バナーを中央に配置するための親要素） */
+header {
+    text-align: center; /* 中央揃え */
+    padding: 40px 0; /* 上下に余白を追加 */
+}
+
+/* バナー画像のスタイル */
+.banner {
+    width: 90%; /* バナーの横幅を画面の50%に設定 */
+    height: auto; /* 縦横比を維持 */
+    display: block; /* 余計な余白をなくす */
+    margin: 0 auto; /* 左右の余白を自動で調整（中央揃え） */
+}
+
+/* タイトルのデザイン */
+.site-title {
+    font-size: 24px;
+    color: black;
+    position: relative;
+    top: 80px; /* 上に移動 */
+}
+
+/* 下三角のスタイル */
+.down-sankaku {
+    width: 5%; /* バナーの横幅を設定 */
+    height: auto; /* 縦横比を維持 */
+    display: block; /* 余計な余白をなくす */
+    margin: 0 auto; /* 左右の余白を自動で調整（中央揃え） */
+    position: relative;
+    top: 10px; /* 上に移動 */
+}
+
+/* 押した後のグッドボタンのスタイル */
+.goodmark-image.clicked {
+    opacity: 0.8;
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+}
+
+/* いいね数のカウントを非表示 */
+.good-count {
+    display: none;
+}
+
+/* 管理者ページのリスト（グッド数一覧） */
+#good-list {
+    list-style: none; /* リストの点（●）を消す */
+    padding: 0;
+    width: 80%; /* 画面の中央に適度な幅で表示 */
+    margin: 20px auto; /* 上下20px、左右中央寄せ */
+}
+
+/* 各リストのアイテム（作品ごとのグッド数） */
+#good-list li {
+    font-size: 18px; /* 文字サイズ */
+    margin-bottom: 10px; /* 行間を開ける */
+    padding: 5px 0; /* 各行の上下の余白を調整 */
+}
+
+/* グッドボタン（緑バージョン）のスタイル調整 */
+.goodmark-image {
+    border: none; /* 画像の枠線をなくす */
+    outline: none; /* フォーカス時の枠線を消す */
+    background: none; /* もし背景がついていたら削除 */
+    box-shadow: none; /* 影をなくす */
+}
+
+/* 🔹 ポップアップ全体 */
+.popup {
+    position: absolute;
+    width: 370px; /* 調整用 */
+    height: auto;
+    display: none; /* 初期は非表示 */
+    z-index: 1000;
+}
+
+/* 🔹 背景画像 */
+.popup-bg {
+    width: 100%; /* ポップアップの幅に合わせる */
+    height: auto;
+    display: block;
+}
+
+/* 🔹 バツボタン */
+.close-btn {
+    position: absolute;
+    width: 2px; /* 調整用 */
+    height: auto;
+    top: 28px;
+    left: 32px; /* 位置は自分で調整 */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* 🔹 バツボタンの画像 */
+.close-btn img {
+    width: 15px; /* 大きさ調整 */
+    height: auto;
+}
+
+/* 🔹 メッセージのテキスト */
+.popup-text {
+    position: absolute;
+    top: 25px; /* 位置調整 */
+    left: 50px;
+    width: 80%; /* 幅調整 */
+    color: black;
+    font-size: 12px;
+    text-align: left;
+}
+
+/* 🔹 入力欄 */
+.message-input {
+    position: absolute;
+    bottom: 27px; /* 位置調整 */
+    left: 50px;
+    width: 70%;
+    padding: 5px;
+}
+
+/* 🔹 送信ボタン */
+.send-btn {
+    position: absolute;
+    bottom: 17px; /* 位置調整 */
+    right: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* 🔹 送信ボタンの画像 */
+.send-btn img {
+    width: 45px; /* 大きさ調整 */
+    height: auto;
+}
+
+
