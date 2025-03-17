@@ -182,7 +182,7 @@ header {
 /* 🔹 ポップアップ全体 */
 .popup {
     position: absolute;
-    width: 350px; /* 調整用 */
+    width: 400px; /* 調整用 */
     height: auto;
     display: none; /* 初期は非表示 */
     z-index: 1000;
