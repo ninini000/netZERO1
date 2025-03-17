@@ -28,7 +28,7 @@ body {
     gap: 60px; /* パネルの間隔 */
     justify-content: center; /* 中央寄せにする */
     transform: scale(0.85); /* 縮小*/
-    padding: 20px;
+    padding: 60px;
 }
 
 /* ⑤ 各パネルのデザイン（1つ1つのパネルの見た目） */
