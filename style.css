@@ -79,7 +79,7 @@ body {
     color: #000;    
     margin-top: 15px; /* 上に余白を追加 */
     margin-left: 10px; /* 左に余白を追加 */
-
+}
 
 /* ⑩ 作者名（pタグ .author） */
 .panel-content .author {
@@ -248,5 +248,4 @@ header {
     width: 45px; /* 大きさ調整 */
     height: auto;
 }
-
 
