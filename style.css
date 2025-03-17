@@ -70,7 +70,7 @@ body {
     text-align: center; /* 中央寄せ */
 }
 
-/* 作品タイトル（h2タグ） */
+/* ⑨ 作品タイトル（h2タグ） */
 .panel-content h2 {
     font-family: 03SmartFontUI;
     font-weight: normal;
@@ -79,14 +79,9 @@ body {
     color: #000;    
     margin-top: 15px; /* 上に余白を追加 */
     margin-left: 10px; /* 左に余白を追加 */
-    line-height: 1.2; /* 行間を調整 */
 }
 
-.panel-content h2.two-lines {
-    font-size: 30px; /* タイトルが二行になった場合に文字サイズを少し小さくする */
-}
-
-/* 作者名（pタグ .author） */
+/* ⑩ 作者名（pタグ .author） */
 .panel-content .author {
     font-family: 03SmartFontUI;
     font-weight: normal;
@@ -94,7 +89,7 @@ body {
     text-align: left;
     color: #000;
     margin-top: 15px; /* 上に余白を追加 */
-    margin-left: 12px; /* 左に余白を追加 */
+    margin-left: 12px; /* 左に余白を追加 */ 
 }
 
 /* MOREテキスト */
@@ -104,20 +99,17 @@ body {
     font-size: 35px;
     text-align: left;
     color: #000;
-    position: absolute; /* 位置を固定 */
-    right: 20px; /* 右に余白を追加 */
-    top: 15px; /* 上に余白を追加 */
+    margin-top: 30px; /* 上に余白を追加 */
+    margin-left: 12px; /* 左に余白を追加 */ 
 }
 
-/* MOREアイコン画像 */
 .MORE-image {
     width: 35px; /* アイコンの幅 */
     height: 35px; /* アイコンの高さ */
-    position: absolute; /* 位置を固定 */
-    right: 20px; /* 右に余白を追加 */
-    top: 15px; /* 上に余白を追加 */
+    position: relative; /* 相対位置を有効化 */
+    top: -108px; /* 上に移動 */
+    left: -20px; /* 左に移動 */
 }
-
 
 /* ヘッダー全体（バナーを中央に配置するための親要素） */
 header {
