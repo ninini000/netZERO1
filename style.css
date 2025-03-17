@@ -70,7 +70,6 @@ body {
     text-align: center; /* 中央寄せ */
 }
 
-/* ⑨ 作品タイトル（h2タグ） */
 .panel-content h2 {
     font-family: 03SmartFontUI;
     font-weight: normal;
@@ -79,7 +78,25 @@ body {
     color: #000;    
     margin-top: 15px; /* 上に余白を追加 */
     margin-left: 10px; /* 左に余白を追加 */
+    max-width: 100%; /* 親要素内で収まるように */
+    word-wrap: break-word; /* 単語の途中で改行を許可 */
+    overflow-wrap: break-word;
+    line-height: 1.2; /* 行間を調整 */
 }
+
+/* 長すぎるタイトル用にレスポンシブ対応 */
+@media (max-width: 768px) {
+    .panel-content h2 {
+        font-size: 28px; /* 画面が小さい場合フォントサイズを縮小 */
+    }
+}
+
+@media (max-width: 480px) {
+    .panel-content h2 {
+        font-size: 24px; /* さらに小さい画面ではフォントサイズをさらに縮小 */
+    }
+}
+
 
 /* ⑩ 作者名（pタグ .author） */
 .panel-content .author {
