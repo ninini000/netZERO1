@@ -22,3 +22,16 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    let testDocRef = db.collection("test").doc("init");
+    testDocRef.set({
+        message: "Firebaseと連携成功！"
+    })
+    .then(() => {
+        console.log("ドキュメントが正常に書き込まれました！");
+    })
+    .catch((error) => {
+        console.error("エラーが発生しました：", error);
+    });
+});
