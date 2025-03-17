@@ -79,7 +79,7 @@ body {
     color: #000;    
     margin-top: 15px; /* 上に余白を追加 */
     margin-left: 10px; /* 左に余白を追加 */
-
+}
 
 /* ⑩ 作者名（pタグ .author） */
 .panel-content .author {
@@ -110,6 +110,7 @@ body {
     top: -108px; /* 上に移動 */
     left: -20px; /* 左に移動 */
 }
+
 /* ヘッダー全体（バナーを中央に配置するための親要素） */
 header {
     text-align: center; /* 中央揃え */
