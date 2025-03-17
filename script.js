@@ -105,13 +105,3 @@ document.querySelectorAll(".goodmark-image").forEach(button => {
 document.querySelector(".close-btn").addEventListener("click", function() {
     document.querySelector(".popup").style.display = "none";
 });
-
-document.addEventListener("DOMContentLoaded", function() {
-    var titles = document.querySelectorAll('.panel-content .title');
-    titles.forEach(function(title) {
-        // タイトルが二行以上になった場合
-        if (title.scrollHeight > title.clientHeight) {
-            title.classList.add('two-lines');
-        }
-    });
-});
