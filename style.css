@@ -54,8 +54,8 @@ body {
 }
 
 .goodmark-image {
-    width: 100px; /* アイコンの幅 */
-    height: 100px; /* アイコンの高さ */
+    width: 140px; /* アイコンの幅 */
+    height: 140px; /* アイコンの高さ */
     position: relative; /* 相対位置を有効化 */
     top: -78px; /* 上に移動 */
     right: -120px; /* 右に移動 */
@@ -182,7 +182,7 @@ header {
 /* 🔹 ポップアップ全体 */
 .popup {
     position: absolute;
-    width: 370px; /* 調整用 */
+    width: 450px; /* 調整用 */
     height: auto;
     display: none; /* 初期は非表示 */
     z-index: 1000;
