@@ -70,6 +70,7 @@ body {
     text-align: center; /* 中央寄せ */
 }
 
+/* ⑨ 作品タイトル（h2タグ） */
 .panel-content h2 {
     font-family: 03SmartFontUI;
     font-weight: normal;
@@ -78,25 +79,17 @@ body {
     color: #000;    
     margin-top: 15px; /* 上に余白を追加 */
     margin-left: 10px; /* 左に余白を追加 */
-    max-width: 100%; /* 親要素内で収まるように */
-    word-wrap: break-word; /* 単語の途中で改行を許可 */
+    max-width: 100%;
+    word-wrap: break-word;
     overflow-wrap: break-word;
-    line-height: 1.2; /* 行間を調整 */
+    line-height: 1.2; /* 行間調整 */
+    transition: font-size 0.2s ease; /* スムーズにサイズ変化 */
 }
 
-/* 長すぎるタイトル用にレスポンシブ対応 */
-@media (max-width: 768px) {
-    .panel-content h2 {
-        font-size: 28px; /* 画面が小さい場合フォントサイズを縮小 */
-    }
+/* h2が2行になったら文字サイズを小さくする */
+.panel-content h2:has(+ .author:before) {
+    font-size: 30px; /* 少し小さく */
 }
-
-@media (max-width: 480px) {
-    .panel-content h2 {
-        font-size: 24px; /* さらに小さい画面ではフォントサイズをさらに縮小 */
-    }
-}
-
 
 /* ⑩ 作者名（pタグ .author） */
 .panel-content .author {
@@ -106,7 +99,8 @@ body {
     text-align: left;
     color: #000;
     margin-top: 15px; /* 上に余白を追加 */
-    margin-left: 12px; /* 左に余白を追加 */ 
+    margin-left: 12px; /* 左に余白を追加 */
+    position: relative; /* タイトルが長くなった場合に下にずれるように */
 }
 
 /* MOREテキスト */
@@ -117,16 +111,21 @@ body {
     text-align: left;
     color: #000;
     margin-top: 30px; /* 上に余白を追加 */
-    margin-left: 12px; /* 左に余白を追加 */ 
+    margin-left: 12px; /* 左に余白を追加 */
+    position: absolute; /* 固定位置 */
+    right: 50px; /* 適宜調整 */
+    top: 30px; /* ずれないように */
 }
 
+/* MOREアイコン */
 .MORE-image {
-    width: 35px; /* アイコンの幅 */
-    height: 35px; /* アイコンの高さ */
-    position: relative; /* 相対位置を有効化 */
-    top: -108px; /* 上に移動 */
-    left: -20px; /* 左に移動 */
+    width: 35px;
+    height: 35px;
+    position: absolute; /* ずれないように */
+    right: 10px; /* MOREの右側に配置 */
+    top: 30px; /* 位置調整 */
 }
+
 
 /* ヘッダー全体（バナーを中央に配置するための親要素） */
 header {
