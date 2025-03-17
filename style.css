@@ -107,7 +107,7 @@ body {
     width: 35px; /* アイコンの幅 */
     height: 35px; /* アイコンの高さ */
     position: relative; /* 相対位置を有効化 */
-    top: -92px; /* 上に移動 */
+    top: -98px; /* 上に移動 */
     left: -20px; /* 左に移動 */
 }
 
@@ -127,10 +127,11 @@ header {
 
 /* タイトルのデザイン */
 .site-title {
-    font-size: 24px;
+    font-size: 34px;
     color: black;
     position: relative;
     top: 80px; /* 上に移動 */
+    padding: 40px 0; /* 上下に余白を追加 */
 }
 
 /* 下三角のスタイル */
