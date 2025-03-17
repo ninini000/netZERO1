@@ -115,3 +115,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    var titles = document.querySelectorAll('.panel-content h2');
+    titles.forEach(function(title) {
+        if (title.scrollHeight > title.clientHeight) { // タイトルが二行以上になった場合
+            title.classList.add('two-lines');
+        }
+    });
+});
+
