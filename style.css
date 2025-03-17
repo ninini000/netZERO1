@@ -32,8 +32,8 @@ body {
 
 /* ⑤ 各パネルのデザイン（1つ1つのパネルの見た目） */
 .panel {
-    width: 550px;
-    height: 550px;
+    width: 450px;
+    height: 450px;
     background: #fff;
     box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.16);
     border-radius: 10px;
