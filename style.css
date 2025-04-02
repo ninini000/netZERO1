@@ -26,7 +26,7 @@ body {
     display: flex; /* 横並びに配置 */
     flex-wrap: wrap; /* 画面幅が狭いときに折り返し */
     gap: 60px; /* パネルの間隔 */
-    transform: scale(1.2); /* 縮小*/
+    transform: scale(0.99); /* 縮小*/
     justify-content: center; /* 中央寄せにする */
     padding: 20px;
 }
