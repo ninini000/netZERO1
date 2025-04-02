@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     goodButtons.forEach(button => {
         let id = button.getAttribute("data-id");
-        let storedCount = localStorage.getItem("goodCount_" + id); // 🔹 文字列のまま取得
+        let storedCount = localStorage.getItem("goodCount_" + id); //  文字列のまま取得
 
         // ✅ 「いいね」が押されていたら緑のボタンにする
         if (storedCount === "1") {
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // ✅ グッドボタンのクリックイベント
         button.addEventListener("click", function(event) {
-            let currentCount = localStorage.getItem("goodCount_" + id); // 🔹 文字列のまま取得
+            let currentCount = localStorage.getItem("goodCount_" + id); //  文字列のまま取得
 
             if (this.classList.contains("clicked")) {
                 // ✅ いいね取り消し
@@ -40,11 +40,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 let rect = event.target.getBoundingClientRect();
                 let scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-                messagePopup.style.display = "none"; // 🔹 最初に非表示にする
+                messagePopup.style.display = "none"; //  最初に非表示にする
                 setTimeout(() => {
-                    messagePopup.style.left = (rect.left + window.scrollX - 30) + "px"; 
+                    messagePopup.style.left = (rect.left + window.scrollX - 30) + "px";
                     messagePopup.style.top = (rect.top + scrollTop - messagePopup.offsetHeight - 10) + "px";
-                    messagePopup.style.display = "block"; // 🔹 位置が計算された後に表示する
+                    messagePopup.style.display = "block"; //  位置が計算された後に表示する
                 }, 0);
 
                 currentGoodId = id;
@@ -57,19 +57,19 @@ document.addEventListener("DOMContentLoaded", function() {
         messagePopup.style.display = "none";
     });
 
-document.addEventListener("DOMContentLoaded", function() {
+    // ✅ パネルをシャッフルするコードをここに追加
     const container = document.querySelector(".panel-container");
-    const panels = Array.from(container.children);
+    if (container) {
+        const panels = Array.from(container.children);
 
-    if (panels.length > 0) {
-        // パネルをシャッフル
-        panels.sort(() => Math.random() - 0.5);
+        if (panels.length > 0) {
+            // パネルをシャッフル
+            panels.sort(() => Math.random() - 0.5);
 
-        // 並べ替えたパネルをコンテナに再配置
-        panels.forEach(panel => container.appendChild(panel));
+            // 並べ替えたパネルをコンテナに再配置
+            panels.forEach(panel => container.appendChild(panel));
+        }
     }
-});
-
 
     // ✅ メッセージを送信
     sendMessage.addEventListener("click", function() {
@@ -94,28 +94,27 @@ document.addEventListener("DOMContentLoaded", function() {
             thankYouMessage.remove();
         }, 3000);
     });
-});
 
-document.querySelectorAll(".goodmark-image").forEach(button => {
-    button.addEventListener("click", function(event) {
-        if (this.classList.contains("clicked")) {
-            return; // ✅ いいね取り消し時にはポップアップを表示しない
-        }
+    document.querySelectorAll(".goodmark-image").forEach(button => {
+        button.addEventListener("click", function(event) {
+            if (this.classList.contains("clicked")) {
+                return; // ✅ いいね取り消し時にはポップアップを表示しない
+            }
 
-        let popup = document.querySelector(".popup");
+            let popup = document.querySelector(".popup");
 
-        // 🔹 画面中央にポップアップを表示する
-        popup.style.left = "50%";
-        popup.style.top = "50%";
-        popup.style.transform = "translate(-63%, -80%)"; // 中央揃えのための変換
+            //  画面中央にポップアップを表示する
+            popup.style.left = "50%";
+            popup.style.top = "50%";
+            popup.style.transform = "translate(-63%, -80%)"; // 中央揃えのための変換
 
-        popup.style.visibility = "visible"; // ポップアップを表示
-        popup.style.display = "block"; // ポップアップを表示
+            popup.style.visibility = "visible"; // ポップアップを表示
+            popup.style.display = "block"; // ポップアップを表示
+        });
     });
-});
 
-
-// 🔹 バツボタンを押したらポップアップを閉じる
-document.querySelector(".close-btn").addEventListener("click", function() {
-    document.querySelector(".popup").style.display = "none";
+    //  バツボタンを押したらポップアップを閉じる
+    document.querySelector(".close-btn").addEventListener("click", function() {
+        document.querySelector(".popup").style.display = "none";
+    });
 });
