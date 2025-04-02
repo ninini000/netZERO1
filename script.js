@@ -57,6 +57,18 @@ document.addEventListener("DOMContentLoaded", function() {
         messagePopup.style.display = "none";
     });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const container = document.querySelector(".panel-container");
+    const panels = Array.from(container.children);
+
+    // パネルをシャッフル
+    panels.sort(() => Math.random() - 0.5);
+
+    // 並べ替えたパネルをコンテナに再配置
+    panels.forEach(panel => container.appendChild(panel));
+});
+
+
     // ✅ メッセージを送信
     sendMessage.addEventListener("click", function() {
         let message = messageInput.value.trim();
