@@ -61,11 +61,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const container = document.querySelector(".panel-container");
     const panels = Array.from(container.children);
 
-    // パネルをシャッフル
-    panels.sort(() => Math.random() - 0.5);
+    if (panels.length > 0) {
+        // パネルをシャッフル
+        panels.sort(() => Math.random() - 0.5);
 
-    // 並べ替えたパネルをコンテナに再配置
-    panels.forEach(panel => container.appendChild(panel));
+        // 並べ替えたパネルをコンテナに再配置
+        panels.forEach(panel => container.appendChild(panel));
+    }
 });
 
 
