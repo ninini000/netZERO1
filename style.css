@@ -38,7 +38,7 @@ body {
     background: #fff;
     box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.16);
     border-radius: 10px;
-    
+
     transition: transform 0.3s ease-in-out; /* ホバー時のアニメーション */
 }
 
@@ -76,7 +76,7 @@ body {
     font-weight: normal;
     font-size: 35px;
     text-align: left;
-    color: #000;    
+    color: #000;
     margin-top: 15px; /* 上に余白を追加 */
     margin-left: 10px; /* 左に余白を追加 */
 }
@@ -89,7 +89,7 @@ body {
     text-align: left;
     color: #000;
     margin-top: 15px; /* 上に余白を追加 */
-    margin-left: 12px; /* 左に余白を追加 */ 
+    margin-left: 12px; /* 左に余白を追加 */
 }
 
 /* MOREテキスト */
@@ -100,7 +100,7 @@ body {
     text-align: left;
     color: #000;
     margin-top: 30px; /* 上に余白を追加 */
-    margin-left: 12px; /* 左に余白を追加 */ 
+    margin-left: 12px; /* 左に余白を追加 */
 }
 
 .MORE-image {
@@ -179,7 +179,7 @@ header {
     box-shadow: none; /* 影をなくす */
 }
 
-/* 🔹 ポップアップ全体 */
+/* ポップアップ全体 */
 .popup {
     position: absolute;
     width: 370px; /* 調整用 */
@@ -188,14 +188,14 @@ header {
     z-index: 1000;
 }
 
-/* 🔹 背景画像 */
+/* 背景画像 */
 .popup-bg {
     width: 100%; /* ポップアップの幅に合わせる */
     height: auto;
     display: block;
 }
 
-/* 🔹 バツボタン */
+/* バツボタン */
 .close-btn {
     position: absolute;
     width: 2px; /* 調整用 */
@@ -207,13 +207,13 @@ header {
     cursor: pointer;
 }
 
-/* 🔹 バツボタンの画像 */
+/* バツボタンの画像 */
 .close-btn img {
     width: 15px; /* 大きさ調整 */
     height: auto;
 }
 
-/* 🔹 メッセージのテキスト */
+/* メッセージのテキスト */
 .popup-text {
     position: absolute;
     top: 25px; /* 位置調整 */
@@ -224,7 +224,7 @@ header {
     text-align: left;
 }
 
-/* 🔹 入力欄 */
+/* 入力欄 */
 .message-input {
     position: absolute;
     bottom: 27px; /* 位置調整 */
@@ -234,8 +234,7 @@ header {
     height: 40px; /* 縦幅の設定 */
 }
 
-
-/* 🔹 送信ボタン */
+/* 送信ボタン */
 .send-btn {
     position: absolute;
     bottom: 17px; /* 位置調整 */
@@ -245,13 +244,18 @@ header {
     cursor: pointer;
 }
 
-/* 🔹 送信ボタンの画像 */
+/* 送信ボタンの画像 */
 .send-btn img {
     width: 45px; /* 大きさ調整 */
     height: auto;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
+/* more goodコンテナ */
+.more-good-container {
+    display: flex; /* 横並びにする */
+    align-items: center; /* 垂直方向に中央揃え */
+}
