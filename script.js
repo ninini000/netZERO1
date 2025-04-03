@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const goodButtons = document.querySelectorAll(".goodmark-button");
     const messagePopup = document.getElementById("messagePopup");
     const closePopup = document.getElementById("closePopup");
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // ✅ グッドボタンのクリックイベント
-        button.addEventListener("click", function(event) {
+        button.addEventListener("click", function (event) {
             let currentCount = localStorage.getItem("goodCount_" + id); // 文字列のまま取得
 
             if (this.classList.contains("clicked")) {
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 localStorage.setItem("goodCount_" + id, "0");
                 this.querySelector(".goodmark-image").src = "グッドマーク.png";
                 this.classList.remove("clicked");
-                messagePopup.style.display = "none";
+                messagePopup.style.display = "none"; // ポップアップを非表示にする
             } else {
                 // ✅ いいね付与
                 localStorage.setItem("goodCount_" + id, "1");
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // ✅ バツボタンでポップアップを閉じる
-    closePopup.addEventListener("click", function() {
+    closePopup.addEventListener("click", function () {
         messagePopup.style.display = "none";
     });
 
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // ✅ メッセージを送信
-    sendMessage.addEventListener("click", function() {
+    sendMessage.addEventListener("click", function () {
         let message = messageInput.value.trim();
         if (message === "") return;
 
@@ -93,29 +93,5 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(() => {
             thankYouMessage.remove();
         }, 3000);
-    });
-
-    // ポップアップ表示
-    document.querySelectorAll(".goodmark-button").forEach(button => {
-        button.addEventListener("click", function(event) {
-            if (this.classList.contains("clicked")) {
-                return; // ✅ いいね取り消し時にはポップアップを表示しない
-            }
-
-            let popup = document.querySelector(".popup");
-
-            // 画面中央にポップアップを表示する
-            popup.style.left = "50%";
-            popup.style.top = "50%";
-            popup.style.transform = "translate(-63%, -80%)"; // 中央揃えのための変換
-
-            popup.style.visibility = "visible"; // ポップアップを表示
-            popup.style.display = "block"; // ポップアップを表示
-        });
-    });
-
-    // バツボタンを押したらポップアップを閉じる
-    document.querySelector(".close-btn").addEventListener("click", function() {
-        document.querySelector(".popup").style.display = "none";
     });
 });
