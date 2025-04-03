@@ -1,6 +1,6 @@
 const admin = require("firebase-admin");
 
-const serviceAccount = require("../serviceAccountKey.json"); // 修正: 相対パスを修正
+const serviceAccount = require("../netzero1-fc5e6-firebase-adminsdk-fbsvc-0cdbafd758.json"); // 修正: ファイル名を修正
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
