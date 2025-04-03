@@ -187,8 +187,9 @@ header {
     display: none; /* 初期は非表示 */
     z-index: 1000;
     /* ポップアップの位置調整 */
-    top: 80%;
-    left: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-80%, -100%); /* 中央揃えのための変換 */
 }
 
 /* 背景画像 */
