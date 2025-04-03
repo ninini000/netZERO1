@@ -1,9 +1,9 @@
 const admin = require("firebase-admin");
 
-    const serviceAccount = require("./path/to/your/serviceAccountKey.json");
+    const serviceAccount = require("./serviceAccountKey.json");
     admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "YOUR_DATABASE_URL",
+    databaseURL: "https://console.firebase.google.com/u/0/project/netzero1-fc5e6/database/netzero1-fc5e6-default-rtdb/data/~2F?hl=ja",
     });
 
     const db = admin.database();
