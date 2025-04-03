@@ -189,7 +189,7 @@ header {
     /* ポップアップの位置調整 */
     top: 50%;
     left: 50%;
-    transform: translate(-10%, -150%); /* 中央揃えのための変換 */
+    transform: translate(10%, -165%); /* 中央揃えのための変換 */
 }
 
 /* 背景画像 */
