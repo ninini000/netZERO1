@@ -8,7 +8,6 @@
 </head>
 <body>
 
-    <!-- メッセージ送信ポップアップ -->
     <div id="messagePopup" class="popup">
         <img src="メッセージ背景.png" alt="メッセージ背景" class="popup-bg">
         <button id="closePopup" class="close-btn">
@@ -25,17 +24,17 @@
         <img src="磁石祭ZERO用サムネ.png" alt="学園祭バナー" class="banner">
         <img src="下三角.png" alt="下三角" class="down-sankaku">
     </header>
-    
-    <!-- ① パネルをまとめるコンテナ -->
+
     <div class="panel-container">
-        <!-- ② 各パネル -->
         <div class="panel">
             <img src="磁石際 (1) - 中川聖都.png" alt="作品1" class="main-image">
             <div class="panel-content">
                 <h2>作品タイトル1</h2>
                 <p class="author">作者/ nakagawa seito</p>
-                <p class="more">MORE</p>
-                <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                <a href="more1.html" class="more-link">
+                    <p class="more">MORE</p>
+                    <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                </a>
                 <img src="グッドマーク.png" alt="goodmark" class="goodmark-image" data-id="1">
                 <p class="good-count">0</p>
             </div>
@@ -46,20 +45,24 @@
             <div class="panel-content">
                 <h2>作品タイトル2</h2>
                 <p class="author">作者/ 働かざるものも飯を食う</p>
-                <p class="more">MORE</p>
-                <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                <a href="more2.html" class="more-link">
+                    <p class="more">MORE</p>
+                    <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                </a>
                 <img src="グッドマーク.png" alt="goodmark" class="goodmark-image" data-id="2">
                 <p class="good-count">0</p>
             </div>
         </div>
 
         <div class="panel">
-            <img src="機体1Rigレンダリング - 矢田部陽生.png" alt="作品3" class="main-image">
+            <img src="機体1Rigレンダリング - 矢田部陽生.png" alt="作品3" class="main-image">
             <div class="panel-content">
                 <h2>オリジナルメカ1機体目</h2>
                 <p class="author">作者/ ただのAC好き</p>
-                <p class="more">MORE</p>
-                <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                <a href="more3.html" class="more-link">
+                    <p class="more">MORE</p>
+                    <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                </a>
                 <img src="グッドマーク.png" alt="goodmark" class="goodmark-image" data-id="3">
                 <p class="good-count">0</p>
             </div>
@@ -70,8 +73,10 @@
             <div class="panel-content">
                 <h2>クサガメ</h2>
                 <p class="author">作者/ 10時</p>
-                <p class="more">MORE</p>
-                <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                <a href="more4.html" class="more-link">
+                    <p class="more">MORE</p>
+                    <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                </a>
                 <img src="グッドマーク.png" alt="goodmark" class="goodmark-image" data-id="4">
                 <p class="good-count">0</p>
             </div>
@@ -82,21 +87,17 @@
             <div class="panel-content">
                 <h2>日本庭園</h2>
                 <p class="author">作者/ Mblender3d</p>
-                <p class="more">MORE</p>
-                <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                <a href="more5.html" class="more-link">
+                    <p class="more">MORE</p>
+                    <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                </a>
                 <img src="グッドマーク.png" alt="goodmark" class="goodmark-image" data-id="5">
                 <p class="good-count">0</p>
             </div>
         </div>
-        
     </div>
 
-    <!-- ✅ script.js を読み込むのはここだけ -->
     <script src="script.js"></script>
 
-
-    <script type="module">
-</script>
-    
 </body>
 </html>
