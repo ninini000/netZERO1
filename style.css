@@ -259,3 +259,10 @@ a {
     display: flex; /* 横並びにする */
     align-items: center; /* 垂直方向に中央揃え */
 }
+
+/* グッドボタン */
+.goodmark-button {
+    display: flex; /* 横並びにする */
+    align-items: center; /* 垂直方向に中央揃え */
+    margin-left: 20px; /* 左に余白を追加 */
+}
