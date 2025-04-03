@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     goodButtons.forEach(button => {
         let id = button.getAttribute("data-id");
-        let storedCount = localStorage.getItem("goodCount_" + id); //  文字列のまま取得
+        let storedCount = localStorage.getItem("goodCount_" + id); // 文字列のまま取得
 
         // ✅ 「いいね」が押されていたら緑のボタンにする
         if (storedCount === "1") {
@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // ✅ グッドボタンのクリックイベント
         button.addEventListener("click", function(event) {
-            let currentCount = localStorage.getItem("goodCount_" + id); //  文字列のまま取得
+            event.stopPropagation(); // イベントの伝播を停止
+            let currentCount = localStorage.getItem("goodCount_" + id); // 文字列のまま取得
 
             if (this.classList.contains("clicked")) {
                 // ✅ いいね取り消し
@@ -40,11 +41,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 let rect = event.target.getBoundingClientRect();
                 let scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-                messagePopup.style.display = "none"; //  最初に非表示にする
+                messagePopup.style.display = "none"; // 最初に非表示にする
                 setTimeout(() => {
                     messagePopup.style.left = (rect.left + window.scrollX - 30) + "px";
                     messagePopup.style.top = (rect.top + scrollTop - messagePopup.offsetHeight - 10) + "px";
-                    messagePopup.style.display = "block"; //  位置が計算された後に表示する
+                    messagePopup.style.display = "block"; // 位置が計算された後に表示する
                 }, 0);
 
                 currentGoodId = id;
@@ -103,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             let popup = document.querySelector(".popup");
 
-            //  画面中央にポップアップを表示する
+            // 画面中央にポップアップを表示する
             popup.style.left = "50%";
             popup.style.top = "50%";
             popup.style.transform = "translate(-63%, -80%)"; // 中央揃えのための変換
@@ -113,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    //  バツボタンを押したらポップアップを閉じる
+    // バツボタンを押したらポップアップを閉じる
     document.querySelector(".close-btn").addEventListener("click", function() {
         document.querySelector(".popup").style.display = "none";
     });
