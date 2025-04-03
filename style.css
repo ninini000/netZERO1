@@ -184,10 +184,12 @@ header {
     position: absolute;
     width: 370px; /* 調整用 */
     height: auto;
-    top: 100px;
-    left: -50px; /* 位置は自分で調整 */
     display: none; /* 初期は非表示 */
     z-index: 1000;
+    /* ポップアップの位置調整 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%); /* 中央揃えのための変換 */
 }
 
 /* 背景画像 */
