@@ -95,3 +95,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 3000);
     });
 });
+
+function getGoodCounts() {
+    fetch("/api/goodCounts")
+    .then((response) => response.json())
+    .then((data) => {
+    console.log(data);
+    })
+    .catch((error) => {
+    console.error("Error getting good counts:", error);
+    });
+    }
+
+    getGoodCounts();
