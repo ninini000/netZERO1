@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const goodButtons = document.querySelectorAll(".goodmark-image");
+    const goodButtons = document.querySelectorAll(".goodmark-button");
     const messagePopup = document.getElementById("messagePopup");
     const closePopup = document.getElementById("closePopup");
     const sendMessage = document.getElementById("sendMessage");
@@ -13,32 +13,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // ✅ 「いいね」が押されていたら緑のボタンにする
         if (storedCount === "1") {
-            button.src = "グッドマーク_緑.png";
+            button.querySelector(".goodmark-image").src = "グッドマーク_緑.png";
             button.classList.add("clicked");
         } else {
-            button.src = "グッドマーク.png"; // 初期状態の白いボタン
+            button.querySelector(".goodmark-image").src = "グッドマーク.png"; // 初期状態の白いボタン
             button.classList.remove("clicked");
         }
 
         // ✅ グッドボタンのクリックイベント
         button.addEventListener("click", function(event) {
-            event.stopPropagation(); // イベントの伝播を停止
             let currentCount = localStorage.getItem("goodCount_" + id); // 文字列のまま取得
 
             if (this.classList.contains("clicked")) {
                 // ✅ いいね取り消し
                 localStorage.setItem("goodCount_" + id, "0");
-                this.src = "グッドマーク.png";
+                this.querySelector(".goodmark-image").src = "グッドマーク.png";
                 this.classList.remove("clicked");
                 messagePopup.style.display = "none";
             } else {
                 // ✅ いいね付与
                 localStorage.setItem("goodCount_" + id, "1");
-                this.src = "グッドマーク_緑.png";
+                this.querySelector(".goodmark-image").src = "グッドマーク_緑.png";
                 this.classList.add("clicked");
 
                 // ✅ 押したボタンの上にポップアップを表示
-                let rect = event.target.getBoundingClientRect();
+                let rect = this.getBoundingClientRect();
                 let scrollTop = window.scrollY || document.documentElement.scrollTop;
 
                 messagePopup.style.display = "none"; // 最初に非表示にする
@@ -85,18 +84,19 @@ document.addEventListener("DOMContentLoaded", function() {
         messageInput.value = "";
 
         // ✅ 感謝メッセージを表示
-        let goodButton = document.querySelector(`.goodmark-image[data-id="${currentGoodId}"]`);
+        let goodButton = document.querySelector(`.goodmark-button[data-id="${currentGoodId}"]`);
         let thankYouMessage = document.createElement("p");
         thankYouMessage.textContent = "メッセージが届きました！";
         thankYouMessage.classList.add("thank-you-message");
-        goodButton.parentNode.appendChild(thankYouMessage);
+        goodButton.appendChild(thankYouMessage);
 
         setTimeout(() => {
             thankYouMessage.remove();
         }, 3000);
     });
 
-    document.querySelectorAll(".goodmark-image").forEach(button => {
+    // ポップアップ表示
+    document.querySelectorAll(".goodmark-button").forEach(button => {
         button.addEventListener("click", function(event) {
             if (this.classList.contains("clicked")) {
                 return; // ✅ いいね取り消し時にはポップアップを表示しない
