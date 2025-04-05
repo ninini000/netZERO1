@@ -5,17 +5,34 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
-      overflow-x: hidden; /* 横スクロールを防止 */
+      padding: 40px 0;
+      background-color: #f9f9f9;
+      text-align: center;
     }
-    img {
-      width: 50vw;       /* 横幅を画面いっぱいに */
-      height: auto;       /* 縦は自動（画像比率を保つ） */
+    .image-container {
+      width: 100%;
+    }
+    .image-full {
+      width: 100%;
+      height: auto;
       display: block;
+      margin-bottom: 40px;
+    }
+    .image-half {
+      width: 50vw;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
-  <img src="作品1紹介.png" alt="縦長画像">
+  <div class="image-container">
+    <!-- 上に表示する画像 -->
+    <img src="image1.jpg" alt="一枚目の画像" class="image-full">
+
+    <!-- 中央寄せ・横幅50%の縦長画像 -->
+    <img src="作品1紹介.png" alt="縦長画像" class="image-half">
+  </div>
 </body>
 </html>
