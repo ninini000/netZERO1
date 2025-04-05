@@ -9,7 +9,7 @@ try {
   });
 } catch (error) {
   console.error("Firebase initialization error:", error);
-  // res.status(500).json({ error: "Firebase initialization error" }); // APIレスポンス内でエラーを返す場合はコメントアウトを外してください。
+  // Firebaseの初期化に失敗しても何も返さない
 }
 
 const db = admin.database();
@@ -21,6 +21,7 @@ module.exports = async (req, res) => {
     res.status(200).json(goodCounts);
   } catch (error) {
     console.error("Error getting good counts:", error);
-    res.status(500).json({ error: "Internal server error", details: error.message });
+    // ↓ エラー時でも空のオブジェクトを返して200にする（失敗表示を避ける）
+    res.status(200).json({});
   }
 };
