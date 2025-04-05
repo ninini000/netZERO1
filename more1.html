@@ -2,35 +2,23 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>2枚の全画面画像</title>
+  <title>縦に並んだ画像</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
+    body {
+      text-align: center;
+      margin: 50px;
     }
-    .container {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .half {
-      flex: 1;
-      background-size: cover;
-      background-position: center;
-    }
-    .top {
-      background-image: url('画像URL1.jpg');
-    }
-    .bottom {
-      background-image: url('作品1紹介.png');
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 90%;
+      height: auto;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="half top"></div>
-    <div class="half bottom"></div>
-  </div>
+  <h1>縦に並んだ画像</h1>
+  <img src="image1.jpg" alt="画像1">
+  <img src="image2.jpg" alt="作品1紹介.png">
 </body>
 </html>
