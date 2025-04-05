@@ -1,11 +1,16 @@
 const admin = require("firebase-admin");
 
-const serviceAccount = require("../netzero1-fc5e6-firebase-adminsdk-fbsvc-0cdbafd758.json"); // 修正: ファイル名を修正
+try {
+  const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://netzero1-fc5e6-default-rtdb.firebaseio.com/", // 修正: データベースURLを修正
-});
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://netzero1-fc5e6-default-rtdb.firebaseio.com/",
+  });
+} catch (error) {
+  console.error("Firebase initialization error:", error);
+  // res.status(500).json({ error: "Firebase initialization error" }); // APIレスポンス内でエラーを返す場合はコメントアウトを外してください。
+}
 
 const db = admin.database();
 
@@ -16,6 +21,6 @@ module.exports = async (req, res) => {
     res.status(200).json(goodCounts);
   } catch (error) {
     console.error("Error getting good counts:", error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internal server error", details: error.message });
   }
 };
