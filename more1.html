@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <title>画像表示</title>
   <style>
     body {
       margin: 0;
@@ -10,19 +11,16 @@
       text-align: center;
     }
     .image-container {
-      width: 90vw;
+      width: 100%;
+    }
+    .image-large {
+      width: 90vw;         /* 画面の90%幅 */
       height: auto;
       display: block;
-      margin: 0 auto;
+      margin: 0 auto 40px; /* 下にスペース＋中央寄せ */
     }
-    .image-full {
-      width: 90vw;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-    .image-half {
-      width: 80vw;
+    .image-medium {
+      width: 50vw;         /* 画面の50%幅 */
       height: auto;
       display: block;
       margin: 0 auto;
@@ -31,11 +29,11 @@
 </head>
 <body>
   <div class="image-container">
-    <!-- 上に表示する画像 -->
-    <img src="磁石際 (1) - 中川聖都.png" alt="一枚目の画像" class="image-full">
+    <!-- 90%で中央に表示される1枚目 -->
+    <img src="磁石際 (1) - 中川聖都.png" alt="一枚目の画像" class="image-large">
 
-    <!-- 中央寄せ・横幅50%の縦長画像 -->
-    <img src="作品1紹介.png" alt="縦長画像" class="image-half">
+    <!-- 50%で中央に表示される2枚目（縦長） -->
+    <img src="作品1紹介.png" alt="縦長画像" class="image-medium">
   </div>
 </body>
 </html>
