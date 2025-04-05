@@ -2,23 +2,21 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>縦に並んだ画像</title>
+  <title>縦長画像の表示</title>
   <style>
     body {
-      text-align: center;
-      margin: 50px;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; /* 横スクロールを防止 */
     }
     img {
+      width: 100vw;       /* 横幅を画面いっぱいに */
+      height: auto;       /* 縦は自動（画像比率を保つ） */
       display: block;
-      margin: 20px auto;
-      max-width: 90%;
-      height: auto;
     }
   </style>
 </head>
 <body>
-  <h1>縦に並んだ画像</h1>
-  <img src="image1.jpg" alt="画像1">
-  <img src="image2.jpg" alt="作品1紹介.png">
+  <img src="作品1紹介.png" alt="縦長画像">
 </body>
 </html>
