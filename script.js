@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         messageInput.value = "";
 
         // ✅ 感謝メッセージを表示
-        let goodButton = document.querySelector(.goodmark-button[data-id="${currentGoodId}"]);
+        let goodButton = document.querySelector(`.goodmark-button[data-id="${currentGoodId}"]`);
         let thankYouMessage = document.createElement("p");
         thankYouMessage.textContent = "メッセージが届きました！";
         thankYouMessage.classList.add("thank-you-message");
@@ -97,22 +97,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function getGoodCounts() {
-  fetch("/api/goodCounts")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(HTTP error! status: ${response.status});
-      }
-      return response.json();
-    })
+    fetch("/api/goodCounts")
+    .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      // 取得したデータを表示する処理
+    console.log(data);
     })
     .catch((error) => {
-      console.error("Error getting good counts:", error);
-      // エラーメッセージをユーザーに表示する処理
-      alert("グッドボタンの数の取得に失敗しました。");
+    console.error("Error getting good counts:", error);
     });
-}
+    }
 
-getGoodCounts();
+    getGoodCounts();
