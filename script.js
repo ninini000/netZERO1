@@ -108,10 +108,7 @@ function getGoodCounts() {
       console.log(data);
       // 取得したデータを表示する処理
     })
-    .catch((error) => {
-      console.error("Error getting good counts:", error);
-      // エラーメッセージをユーザーに表示する処理
-      alert("グッドボタンの数の取得に失敗しました。");
+
     });
 }
 
