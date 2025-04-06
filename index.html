@@ -1,118 +1,142 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const goodButtons = document.querySelectorAll(".goodmark-button");
-    const messagePopup = document.getElementById("messagePopup");
-    const closePopup = document.getElementById("closePopup");
-    const sendMessage = document.getElementById("sendMessage");
-    const messageInput = document.getElementById("messageInput");
+u<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学園祭サイト</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    let currentGoodId = null; // 押されたグッドボタンのID
+    <div id="messagePopup" class="popup">
+        <img src="メッセージ背景.png" alt="メッセージ背景" class="popup-bg">
+        <button id="closePopup" class="close-btn">
+            <img src="メッセージバツボタン.png" alt="閉じる">
+        </button>
+        <p class="popup-text">あなたの『いいね』が届きました！<br>よかったら、ひとことメッセージも送りませんか？</p>
+        <textarea id="messageInput" class="message-input" placeholder="メッセージを入力してください"></textarea>
+        <button id="sendMessage" class="send-btn">
+            <img src="メッセージ送信ボタン.png" alt="送信">
+        </button>
+    </div>
 
-    goodButtons.forEach(button => {
-        let id = button.getAttribute("data-id");
-        let storedCount = localStorage.getItem("goodCount_" + id); // 文字列のまま取得
+    <header>
+        <img src="磁石祭ZERO用サムネ.png" alt="学園祭バナー" class="banner">
+        <img src="下三角.png" alt="下三角" class="down-sankaku">
+    </header>
 
-        // ✅ 「いいね」が押されていたら緑のボタンにする
-        if (storedCount === "1") {
-            button.querySelector(".goodmark-image").src = "グッドマーク_緑.png";
-            button.classList.add("clicked");
-        } else {
-            button.querySelector(".goodmark-image").src = "グッドマーク.png"; // 初期状態の白いボタン
-            button.classList.remove("clicked");
-        }
+    <div class="panel-container">
+        <div class="panel">
+            <a href="more1.html" class="panel-link">
+                <img src="磁石際 (1) - 中川聖都.png" alt="作品1" class="main-image">
+                <div class="panel-content">
+                    <h2>作品タイトル1</h2>
+                    <p class="author">作者/ nakagawa seito</p>
+                    <div class="more-good-container">
+                        <p class="more">MORE</p>
+                        <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                    </div>
+                </div>
+            </a>
+            <span class="goodmark-button" data-id="1">
+                <img src="グッドマーク.png" alt="goodmark" class="goodmark-image">
+                <p class="good-count">0</p>
+            </span>
+        </div>
 
-        // ✅ グッドボタンのクリックイベント
-        button.addEventListener("click", function (event) {
-            let currentCount = localStorage.getItem("goodCount_" + id); // 文字列のまま取得
+        <div class="panel">
+            <a href="more2.html" class="panel-link">
+                <img src="スクリーンショット 2025-01-29 9.31.54 - 藤澤英輝.png" alt="作品2" class="main-image">
+                <div class="panel-content">
+                    <h2>作品タイトル2</h2>
+                    <p class="author">作者/ 働かざるものも飯を食う</p>
+                    <div class="more-good-container">
+                        <p class="more">MORE</p>
+                        <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                    </div>
+                </div>
+            </a>
+            <span class="goodmark-button" data-id="2">
+                <img src="グッドマーク.png" alt="goodmark" class="goodmark-image">
+                <p class="good-count">0</p>
+            </span>
+        </div>
 
-            if (this.classList.contains("clicked")) {
-                // ✅ いいね取り消し
-                localStorage.setItem("goodCount_" + id, "0");
-                this.querySelector(".goodmark-image").src = "グッドマーク.png";
-                this.classList.remove("clicked");
-                messagePopup.style.display = "none"; // ポップアップを非表示にする
-            } else {
-                // ✅ いいね付与
-                localStorage.setItem("goodCount_" + id, "1");
-                this.querySelector(".goodmark-image").src = "グッドマーク_緑.png";
-                this.classList.add("clicked");
+        <div class="panel">
+            <a href="more3.html" class="panel-link">
+                <img src="機体1Rigレンダリング - 矢田部陽生.png" alt="作品3" class="main-image">
+                <div class="panel-content">
+                    <h2>オリジナルメカ1機体目</h2>
+                    <p class="author">作者/ ただのAC好き</p>
+                    <div class="more-good-container">
+                        <p class="more">MORE</p>
+                        <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                    </div>
+                </div>
+            </a>
+            <span class="goodmark-button" data-id="3">
+                <img src="グッドマーク.png" alt="goodmark" class="goodmark-image">
+                <p class="good-count">0</p>
+            </span>
+        </div>
 
-                // ✅ 押したボタンの上にポップアップを表示
-                let rect = this.getBoundingClientRect();
-                let scrollTop = window.scrollY || document.documentElement.scrollTop;
+        <div class="panel">
+            <a href="more4.html" class="panel-link">
+                <img src="Nturtlee - 十時和也.png" alt="作品4" class="main-image">
+                <div class="panel-content">
+                    <h2>クサガメ</h2>
+                    <p class="author">作者/ 10時</p>
+                    <div class="more-good-container">
+                        <p class="more">MORE</p>
+                        <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                    </div>
+                </div>
+            </a>
+            <span class="goodmark-button" data-id="4">
+                <img src="グッドマーク.png" alt="goodmark" class="goodmark-image">
+                <p class="good-count">0</p>
+            </span>
+        </div>
 
-                messagePopup.style.display = "none"; // 最初に非表示にする
-                setTimeout(() => {
-                    messagePopup.style.left = (rect.left + window.scrollX - 30) + "px";
-                    messagePopup.style.top = (rect.top + scrollTop - messagePopup.offsetHeight - 10) + "px";
-                    messagePopup.style.display = "block"; // 位置が計算された後に表示する
-                }, 0);
+        <div class="panel">
+            <a href="more5.html" class="panel-link">
+                <img src="和風庭園 - 天野実来.png" alt="作品5" class="main-image">
+                <div class="panel-content">
+                    <h2>日本庭園</h2>
+                    <p class="author">作者/ Mblender3d</p>
+                    <div class="more-good-container">
+                        <p class="more">MORE</p>
+                        <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                    </div>
+                </div>
+            </a>
+            <span class="goodmark-button" data-id="5">
+                <img src="グッドマーク.png" alt="goodmark" class="goodmark-image">
+                <p class="good-count">0</p>
+            </span>
+        </div>
 
-                currentGoodId = id;
-            }
-        });
-    });
+        <div class="panel">
+            <a href="more6.html" class="panel-link">
+                <img src="サムネイル用パンケーキ6 - 服部樹里.png" alt="作品6" class="main-image">
+                <div class="panel-content">
+                    <h2>理想の朝</h2>
+                    <p class="author">作者/ juri</p>
+                    <div class="more-good-container">
+                        <p class="more">MORE</p>
+                        <img src="moreアイコン.png" alt="MORE" class="MORE-image">
+                    </div>
+                </div>
+            </a>
+            <span class="goodmark-button" data-id="6">
+                <img src="グッドマーク.png" alt="goodmark" class="goodmark-image">
+                <p class="good-count">0</p>
+            </span>
+        </div>
 
-    // ✅ バツボタンでポップアップを閉じる
-    closePopup.addEventListener("click", function () {
-        messagePopup.style.display = "none";
-    });
+    </div>
 
-    // ✅ パネルをシャッフルするコードをここに追加
-    const container = document.querySelector(".panel-container");
-    if (container) {
-        const panels = Array.from(container.children);
+    <script src="script.js"></script>
 
-        if (panels.length > 0) {
-            // パネルをシャッフル
-            panels.sort(() => Math.random() - 0.5);
-
-            // 並べ替えたパネルをコンテナに再配置
-            panels.forEach(panel => container.appendChild(panel));
-        }
-    }
-
-    // ✅ メッセージを送信
-    sendMessage.addEventListener("click", function () {
-        let message = messageInput.value.trim();
-        if (message === "") return;
-
-        let storedMessages = JSON.parse(localStorage.getItem("messages_" + currentGoodId)) || [];
-        storedMessages.push(message);
-        localStorage.setItem("messages_" + currentGoodId, JSON.stringify(storedMessages));
-
-        messagePopup.style.display = "none";
-        messageInput.value = "";
-
-        // ✅ 感謝メッセージを表示
-        let goodButton = document.querySelector(`.goodmark-button[data-id="${currentGoodId}"]`);
-        let thankYouMessage = document.createElement("p");
-        thankYouMessage.textContent = "メッセージが届きました！";
-        thankYouMessage.classList.add("thank-you-message");
-        goodButton.appendChild(thankYouMessage);
-
-        setTimeout(() => {
-            thankYouMessage.remove();
-        }, 3000);
-    });
-});
-
-function getGoodCounts() {
-  fetch("/api/goodCounts")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      // 取得したデータを表示する処理
-    })
-    .catch((error) => {
-      console.error("Error getting good counts:", error);
-      // エラーメッセージをユーザーに表示する処理
-      alert("グッドボタンの数の取得に失敗しました。");
-    });
-}
-
-getGoodCounts();
+</body>
+</html>
