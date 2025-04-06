@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // ✅ グッドボタンのクリックイベント
-        button.addEventListener("click", function () {
+        button.addEventListener("click", function (event) {
             let currentCount = localStorage.getItem("goodCount_" + id); // 文字列のまま取得
 
             if (this.classList.contains("clicked")) {
@@ -95,3 +95,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 3000);
     });
 });
+
+function getGoodCounts() {
+  fetch("/api/goodCounts")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      // 取得したデータを表示する処理
+    })
+    .catch((error) => {
+      console.error("Error getting good counts:", error);
+      // エラーメッセージをユーザーに表示する処理
+      alert("グッドボタンの数の取得に失敗しました。");
+    });
+}
+
+getGoodCounts();
