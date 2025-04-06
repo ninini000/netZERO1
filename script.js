@@ -110,8 +110,7 @@ function getGoodCounts() {
     })
     .catch((error) => {
       console.error("Error getting good counts:", error);
-      // エラーメッセージをユーザーに表示する処理
-      alert("テストメッセージ");
+      // エラーメッセージをユーザーに表示する処理（削除済み）
     });
 }
 
