@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // ✅ グッドボタンのクリックイベント
-        button.addEventListener("click", function () {
+        button.addEventListener("click", function (event) {
             let currentCount = localStorage.getItem("goodCount_" + id); // 文字列のまま取得
 
             if (this.classList.contains("clicked")) {
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         messagePopup.style.display = "none";
     });
 
-    // ✅ パネルをシャッフルするコード
+    // ✅ パネルをシャッフルするコードをここに追加
     const container = document.querySelector(".panel-container");
     if (container) {
         const panels = Array.from(container.children);
@@ -85,36 +85,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // ✅ 感謝メッセージを表示
         let goodButton = document.querySelector(`.goodmark-button[data-id="${currentGoodId}"]`);
-        if (goodButton) {
-            let thankYouMessage = document.createElement("p");
-            thankYouMessage.textContent = "メッセージが届きました！";
-            thankYouMessage.classList.add("thank-you-message");
-            goodButton.appendChild(thankYouMessage);
+        let thankYouMessage = document.createElement("p");
+        thankYouMessage.textContent = "メッセージが届きました！";
+        thankYouMessage.classList.add("thank-you-message");
+        goodButton.appendChild(thankYouMessage);
 
-            setTimeout(() => {
-                thankYouMessage.remove();
-            }, 3000);
-        }
+        setTimeout(() => {
+            thankYouMessage.remove();
+        }, 3000);
     });
 });
 
-// ✅ グッド数を取得する関数
 function getGoodCounts() {
-    fetch("/api/goodCounts")
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data);
-            // 取得したデータを表示する処理
-        })
-        .catch((error) => {
-            console.error("Error getting good counts:", error);
-            alert("グッドボタンの数の取得に失敗しました。");
-        });
+  fetch("/api/goodCounts")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      // 取得したデータを表示する処理
+    })
+    .catch((error) => {
+      console.error("Error getting good counts:", error);
+      // エラーメッセージをユーザーに表示する処理
+      alert("グッドボタンの数の取得に失敗しました。");
+    });
 }
 
 getGoodCounts();
