@@ -1,3 +1,4 @@
+あなた:
 document.addEventListener("DOMContentLoaded", function () {
     const goodButtons = document.querySelectorAll(".goodmark-button");
     const messagePopup = document.getElementById("messagePopup");
@@ -84,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
         messageInput.value = "";
 
         // ✅ 感謝メッセージを表示
-        let goodButton = document.querySelector(`.goodmark-button[data-id="${currentGoodId}"]`);
+        let goodButton = document.querySelector(.goodmark-button[data-id="${currentGoodId}"]);
         let thankYouMessage = document.createElement("p");
         thankYouMessage.textContent = "メッセージが届きました！";
         thankYouMessage.classList.add("thank-you-message");
@@ -100,7 +101,7 @@ function getGoodCounts() {
   fetch("/api/goodCounts")
     .then((response) => {
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(HTTP error! status: ${response.status});
       }
       return response.json();
     })
