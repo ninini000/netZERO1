@@ -97,14 +97,22 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function getGoodCounts() {
-    fetch("/api/goodCounts")
-    .then((response) => response.json())
+  fetch("/api/goodCounts")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then((data) => {
-    console.log(data);
+      console.log(data);
+      // 取得したデータを表示する処理
     })
     .catch((error) => {
-    console.error("Error getting good counts:", error);
+      console.error("Error getting good counts:", error);
+      // エラーメッセージをユーザーに表示する処理
+      alert("グッドボタンの数の取得に失敗しました。");
     });
-    }
+}
 
-    getGoodCounts();
+getGoodCounts();
