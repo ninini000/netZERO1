@@ -1,4 +1,3 @@
-あなた:
 document.addEventListener("DOMContentLoaded", function () {
     const goodButtons = document.querySelectorAll(".goodmark-button");
     const messagePopup = document.getElementById("messagePopup");
