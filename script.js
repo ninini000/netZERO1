@@ -121,7 +121,7 @@ function updateGoodButton(button, isClicked, count) {
         button.querySelector(".goodmark-image").src = "グッドマーク.png";
         button.classList.remove("clicked");
     }
-}
+
 function showPopup(button) {
     let rect = button.getBoundingClientRect();
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -144,4 +144,3 @@ function getGoodCounts() {
 }
 
 getGoodCounts();
-
