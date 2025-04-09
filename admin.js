@@ -59,3 +59,14 @@ db.ref("messages").once("value").then(snapshot => {
 });
 
 });
+// グッド数の取得と表示
+db.ref("goodCounts").once("value").then(snapshot => {
+    const goodData = snapshot.val() || {};
+
+    Object.keys(goodData).forEach(key => {
+        const count = Object.keys(goodData[key] || {}).length;
+        const listItem = document.createElement("li");
+        listItem.textContent = `作品${key} のグッド数: ${count}`;
+        goodList.appendChild(listItem);
+    });
+});
