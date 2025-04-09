@@ -1,3 +1,18 @@
+// Firebase設定をここに貼り付け
+const firebaseConfig = {
+    apiKey: "AIzaSyBXOBFzV7Kk0zjXnrWtrPEb101R3Xmew_c",
+    authDomain: "netzero1-fc5e6.firebaseapp.com",
+    databaseURL: "https://netzero1-fc5e6-default-rtdb.firebaseio.com",
+    projectId: "netzero1-fc5e6",
+    storageBucket: "netzero1-fc5e6.firebasestorage.app",
+    messagingSenderId: "1089803832530",
+    appId: "1:1089803832530:web:9216e96f2df305b2b7f10b",
+    measurementId: "G-1FN7CQEHK3"
+};
+
+// Firebase初期化
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
 
 document.addEventListener("DOMContentLoaded", function () {
     const goodButtons = document.querySelectorAll(".goodmark-button");
@@ -31,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.querySelector(".goodmark-image").src = "グッドマーク.png";
                 this.classList.remove("clicked");
                 messagePopup.style.display = "none"; // ポップアップを非表示にする
+                // Firebaseにグッド数を保存
+                db.ref("goodCounts").child(id).set(0);
             } else {
                 // ✅ いいね付与
                 localStorage.setItem("goodCount_" + id, "1");
@@ -49,6 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, 0);
 
                 currentGoodId = id;
+                // Firebaseにグッド数を保存
+                db.ref("goodCounts").child(id).set(1);
             }
         });
     });
@@ -77,9 +96,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let message = messageInput.value.trim();
         if (message === "") return;
 
-        let storedMessages = JSON.parse(localStorage.getItem("messages_" + currentGoodId)) || [];
-        storedMessages.push(message);
-        localStorage.setItem("messages_" + currentGoodId, JSON.stringify(storedMessages));
+        db.ref("messages").push({
+            goodId: currentGoodId,
+            text: message
+        });
 
         messagePopup.style.display = "none";
         messageInput.value = "";
@@ -98,21 +118,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function getGoodCounts() {
-  fetch("/api/goodCounts")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      // 取得したデータを表示する処理
-    })
-    .catch((error) => {
-      console.error("Error getting good counts:", error);
+    db.ref("goodCounts").once("value").then(snapshot => {
+        const goodData = snapshot.val() || {};
+        console.log(goodData);
+        // 取得したデータを表示する処理
+    }).catch(error => {
+        console.error("Error getting good counts:", error);
     });
 }
 
 getGoodCounts();
-
