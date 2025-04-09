@@ -1,4 +1,4 @@
-// Firebase設定をここに貼り付け
+// Firebase設定（index.jsと同じものを貼り付け）
 const firebaseConfig = {
     apiKey: "AIzaSyBXOBFzV7Kk0zjXnrWtrPEb101R3Xmew_c",
     authDomain: "netzero1-fc5e6.firebaseapp.com",
@@ -10,53 +10,32 @@ const firebaseConfig = {
     measurementId: "G-1FN7CQEHK3"
 };
 
-// Firebase初期化
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// ページが読み込まれたらデータを取得して表示
-document.addEventListener("DOMContentLoaded", function () {
-    const goodList = document.getElementById("good-list");
-    const messageList = document.getElementById("message-list");
+// グッド数を表示
+db.ref("goodCounts").on("value", snapshot => {
+    const goodData = snapshot.val() || {};
+    const goodCountsList = document.getElementById("goodCountsList");
+    goodCountsList.innerHTML = ""; // リストをクリア
 
-    // グッド数の取得と表示（修正版）
-    db.ref("goodCounts").once("value").then(snapshot => {
-        const goodData = snapshot.val() || {};
-
-        Object.keys(goodData).forEach(key => {
-            const count = Object.keys(goodData[key] || {}).length;
-            const listItem = document.createElement("li");
-            listItem.textContent = `作品${key} のグッド数: ${count}`;
-            goodList.appendChild(listItem);
-        });
-    }).catch(error => {
-        console.error("グッド数の取得に失敗:", error);
+    Object.entries(goodData).forEach(([goodId, users]) => {
+        const count = Object.keys(users).length;
+        const li = document.createElement("li");
+        li.textContent = `作品 ${goodId}: ${count} グッド`;
+        goodCountsList.appendChild(li);
     });
+});
 
-    // メッセージの取得と表示（修正版）
-    db.ref("messages").once("value").then(snapshot => {
-        const messageData = snapshot.val() || {};
+// メッセージを表示
+db.ref("messages").on("value", snapshot => {
+    const messagesData = snapshot.val() || {};
+    const messagesList = document.getElementById("messagesList");
+    messagesList.innerHTML = ""; // リストをクリア
 
-        // goodIdごとにメッセージをまとめる
-        const groupedMessages = {};
-        Object.values(messageData).forEach(entry => {
-            if (!entry.goodId || !entry.text) return;
-
-            if (!groupedMessages[entry.goodId]) {
-                groupedMessages[entry.goodId] = [];
-            }
-            groupedMessages[entry.goodId].push(entry.text);
-        });
-
-        // 表示
-        Object.keys(groupedMessages).forEach(goodId => {
-            const listItem = document.createElement("li");
-            const messages = groupedMessages[goodId].join(", ");
-            listItem.textContent = `作品${goodId} のメッセージ: ${messages || "メッセージはありません"}`;
-            messageList.appendChild(listItem);
-        });
-    }).catch(error => {
-        console.error("メッセージの取得に失敗:", error);
+    Object.entries(messagesData).forEach(([key, message]) => {
+        const li = document.createElement("li");
+        li.textContent = `作品 ${message.goodId}: ${message.text}`;
+        messagesList.appendChild(li);
     });
-
 });
