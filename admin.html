@@ -1,65 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>管理者ページ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者ページ</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>管理者ページ - グッドボタンのカウント</h1>
-  <ul id="good-list"></ul>
+    <h1>管理者ページ - グッドボタンのカウント</h1>
+    <ul id="good-list"></ul>
+    
+    <script src="admin.js"></script>
 
-  <h2>メッセージ一覧</h2>
-  <ul id="message-list"></ul>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
 
-  <!-- Firebaseのモジュール読み込み & スクリプト本体 -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-    import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyBXOBFzV7Kk0zjXnrWtrPEb101R3Xmew_c",
-      authDomain: "netzero1-fc5e6.firebaseapp.com",
-      databaseURL: "https://netzero1-fc5e6-default-rtdb.firebaseio.com",
-      projectId: "netzero1-fc5e6",
-      storageBucket: "netzero1-fc5e6.appspot.com",
-      messagingSenderId: "1089803832530",
-      appId: "1:1089803832530:web:9216e96f2df305b2b7f10b",
-      measurementId: "G-1FN7CQEHK3"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-
-    document.addEventListener("DOMContentLoaded", async () => {
-      const goodList = document.getElementById("good-list");
-      const messageList = document.getElementById("message-list");
-
-      try {
-        const snapshotGood = await get(child(ref(db), "goodCounts"));
-        const goodData = snapshotGood.val() || {};
-
-        Object.keys(goodData).forEach(key => {
-          const li = document.createElement("li");
-          li.textContent = `作品${key} のグッド数: ${goodData[key]}`;
-          goodList.appendChild(li);
-        });
-
-        const snapshotMsg = await get(child(ref(db), "messages"));
-        const messageData = snapshotMsg.val() || {};
-
-        Object.keys(messageData).forEach(key => {
-          const messages = messageData[key];
-          if (Array.isArray(messages) && messages.length > 0) {
-            const li = document.createElement("li");
-            li.textContent = `作品${key} のメッセージ: ${messages.join(", ")}`;
-            messageList.appendChild(li);
-          }
-        });
-      } catch (error) {
-        console.error("データ取得エラー:", error);
-      }
-    });
-  </script>
 </body>
 </html>
+<h2>メッセージ一覧</h2>
+<ul id="message-list"></ul>
