@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const goodList = document.getElementById("good-list");
     const messageList = document.getElementById("message-list");
 
-    // グッド数の取得と表示
+    // グッド数の取得と表示（修正版）
     db.ref("goodCounts").once("value").then(snapshot => {
         const goodData = snapshot.val() || {};
 
         Object.keys(goodData).forEach(key => {
-            const count = goodData[key];
+            const count = Object.keys(goodData[key] || {}).length;
             const listItem = document.createElement("li");
             listItem.textContent = `作品${key} のグッド数: ${count}`;
             goodList.appendChild(listItem);
@@ -33,40 +33,30 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("グッド数の取得に失敗:", error);
     });
 
-// メッセージの取得と表示（修正版）
-db.ref("messages").once("value").then(snapshot => {
-    const messageData = snapshot.val() || {};
+    // メッセージの取得と表示（修正版）
+    db.ref("messages").once("value").then(snapshot => {
+        const messageData = snapshot.val() || {};
 
-    // goodIdごとにメッセージをまとめる
-    const groupedMessages = {};
-    Object.values(messageData).forEach(entry => {
-        if (!entry.goodId || !entry.text) return;
+        // goodIdごとにメッセージをまとめる
+        const groupedMessages = {};
+        Object.values(messageData).forEach(entry => {
+            if (!entry.goodId || !entry.text) return;
 
-        if (!groupedMessages[entry.goodId]) {
-            groupedMessages[entry.goodId] = [];
-        }
-        groupedMessages[entry.goodId].push(entry.text);
+            if (!groupedMessages[entry.goodId]) {
+                groupedMessages[entry.goodId] = [];
+            }
+            groupedMessages[entry.goodId].push(entry.text);
+        });
+
+        // 表示
+        Object.keys(groupedMessages).forEach(goodId => {
+            const listItem = document.createElement("li");
+            const messages = groupedMessages[goodId].join(", ");
+            listItem.textContent = `作品${goodId} のメッセージ: ${messages || "メッセージはありません"}`;
+            messageList.appendChild(listItem);
+        });
+    }).catch(error => {
+        console.error("メッセージの取得に失敗:", error);
     });
 
-    // 表示
-    Object.keys(groupedMessages).forEach(goodId => {
-        const listItem = document.createElement("li");
-        listItem.textContent = `作品${goodId} のメッセージ: ${groupedMessages[goodId].join(", ")}`;
-        messageList.appendChild(listItem);
-    });
-}).catch(error => {
-    console.error("メッセージの取得に失敗:", error);
-});
-
-});
-// グッド数の取得と表示
-db.ref("goodCounts").once("value").then(snapshot => {
-    const goodData = snapshot.val() || {};
-
-    Object.keys(goodData).forEach(key => {
-        const count = Object.keys(goodData[key] || {}).length;
-        const listItem = document.createElement("li");
-        listItem.textContent = `作品${key} のグッド数: ${count}`;
-        goodList.appendChild(listItem);
-    });
 });
