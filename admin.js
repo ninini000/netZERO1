@@ -43,16 +43,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 const listItem = document.createElement("li");
                 listItem.textContent = `作品${key} のメッセージ: ${messages.join(", ")}`;
                 messageList.appendChild(listItem);
-            } else if (typeof messages === 'string') { //メッセージが文字列の場合の処理
+            } else if (typeof messages === 'string') { // メッセージが文字列の場合の処理
                 const listItem = document.createElement("li");
                 listItem.textContent = `作品${key} のメッセージ: ${messages}`;
                 messageList.appendChild(listItem);
             } else {
-              console.log("メッセージが配列でも文字列でもありません", messages)
+                console.log("メッセージが配列でも文字列でもありません", messages);
             }
         });
     }).catch(error => {
         console.error("メッセージの取得に失敗:", error);
     });
 });
-</script>
