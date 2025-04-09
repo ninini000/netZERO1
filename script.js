@@ -122,15 +122,6 @@ function updateGoodButton(button, isClicked, count) {
         button.classList.remove("clicked");
     }
 
-    let countText = button.querySelector(".goodmark-count");
-    if (!countText) {
-        countText = document.createElement("span");
-        countText.classList.add("goodmark-count");
-        button.appendChild(countText);
-    }
-    countText.textContent = ` ${count}`;
-}
-
 function showPopup(button) {
     let rect = button.getBoundingClientRect();
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
