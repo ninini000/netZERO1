@@ -270,3 +270,11 @@ a {
     align-items: center; /* 垂直方向に中央揃え */
     margin-left: 20px; /* 左に余白を追加 */
 }
+/* スマホ画面 (最大幅 768px) でのスタイル */
+@media (max-width: 768px) {
+    .goodmark-button {
+        position: absolute;
+        bottom: 10px; /* 下からの距離を調整 */
+        right: 10px; /* 右からの距離を調整 */
+    }
+}
