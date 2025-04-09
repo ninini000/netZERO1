@@ -33,25 +33,29 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("グッド数の取得に失敗:", error);
     });
 
-    // メッセージの取得と表示
-    db.ref("messages").once("value").then(snapshot => {
-        const messageData = snapshot.val() || {};
+// メッセージの取得と表示（修正版）
+db.ref("messages").once("value").then(snapshot => {
+    const messageData = snapshot.val() || {};
 
-        Object.keys(messageData).forEach(key => {
-            const messages = messageData[key];
-            if (Array.isArray(messages) && messages.length > 0) {
-                const listItem = document.createElement("li");
-                listItem.textContent = `作品${key} のメッセージ: ${messages.join(", ")}`;
-                messageList.appendChild(listItem);
-            } else if (typeof messages === 'string') { // メッセージが文字列の場合の処理
-                const listItem = document.createElement("li");
-                listItem.textContent = `作品${key} のメッセージ: ${messages}`;
-                messageList.appendChild(listItem);
-            } else {
-                console.log("メッセージが配列でも文字列でもありません", messages);
-            }
-        });
-    }).catch(error => {
-        console.error("メッセージの取得に失敗:", error);
+    // goodIdごとにメッセージをまとめる
+    const groupedMessages = {};
+    Object.values(messageData).forEach(entry => {
+        if (!entry.goodId || !entry.text) return;
+
+        if (!groupedMessages[entry.goodId]) {
+            groupedMessages[entry.goodId] = [];
+        }
+        groupedMessages[entry.goodId].push(entry.text);
     });
+
+    // 表示
+    Object.keys(groupedMessages).forEach(goodId => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `作品${goodId} のメッセージ: ${groupedMessages[goodId].join(", ")}`;
+        messageList.appendChild(listItem);
+    });
+}).catch(error => {
+    console.error("メッセージの取得に失敗:", error);
+});
+
 });
