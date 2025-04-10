@@ -276,6 +276,7 @@ a {
         position: absolute;
         bottom:-100px; /* 下からの距離を調整 */
         right: 325px; /* 右からの距離を調整 */
+    }
 
     .banner {
         width: 100%; /* 画面幅いっぱいに表示 */
@@ -286,5 +287,5 @@ a {
         width: 50px; /* 下三角の幅を調整 */
         height: auto; /* 高さを自動調整 */
     }
-    }
+
 }
