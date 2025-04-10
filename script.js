@@ -97,6 +97,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }).then(() => {
             messagePopup.style.display = "none";
             messageInput.value = "";
+
+            const goodButton = document.querySelector(`.goodmark-button[data-id="${currentGoodId}"]`);
+            const thankYouMessage = document.createElement("p");
+            thankYouMessage.textContent = "メッセージが届きました！";
+            thankYouMessage.classList.add("thank-you-message");
+            goodButton.appendChild(thankYouMessage);
+
+            setTimeout(() => {
+                thankYouMessage.remove();
+            }, 3000);
         }).catch(error => {
             console.error("メッセージの送信に失敗:", error);
         });
@@ -111,16 +121,7 @@ function updateGoodButton(button, isClicked, count) {
         button.querySelector(".goodmark-image").src = "グッドマーク.png";
         button.classList.remove("clicked");
     }
-
-    let countText = button.querySelector(".goodmark-count");
-    if (!countText) {
-        countText = document.createElement("span");
-        countText.classList.add("goodmark-count");
-        button.appendChild(countText);
-    }
-    countText.textContent = ` ${count}`;
 }
-
 function showPopup(button) {
     let rect = button.getBoundingClientRect();
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -133,3 +134,13 @@ function showPopup(button) {
     }, 0);
 }
 
+function getGoodCounts() {
+    db.ref("goodCounts").once("value").then(snapshot => {
+        const goodData = snapshot.val() || {};
+        console.log("グッド数データ:", goodData);
+    }).catch(error => {
+        console.error("グッド数の取得に失敗:", error);
+    });
+}
+
+getGoodCounts();
