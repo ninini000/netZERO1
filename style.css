@@ -274,7 +274,7 @@ a {
 @media (max-width: 768px) {
     .goodmark-button {
         position: absolute;
-        bottom: 10px; /* 下からの距離を調整 */
-        right: 10px; /* 右からの距離を調整 */
+        bottom:20px; /* 下からの距離を調整 */
+        right: 60px; /* 右からの距離を調整 */
     }
 }
